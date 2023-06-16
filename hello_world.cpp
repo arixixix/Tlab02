@@ -1,11 +1,8 @@
-#include <iostream>
 #include <string>
 
-using namespace std;
-
 int main() {
-	string name;
-	getline(cin, name);
-	cout << "Hello World from " << name << endl;
-	return 0;
+ 	std::string name; //переменная для имени
+ 	std::getline(std::cin, name); // читаем строку
+ 	std::cout << "Hello World from " << name << std::endl; //выводим результат 
+ 	return 0;
 }
