@@ -1,8 +1,8 @@
 #include <string>
 
 int main() {
- 	std::string name; //переменная для имени
- 	std::getline(std::cin, name); // читаем строку
- 	std::cout << "Hello World from " << name << std::endl; //выводим результат 
+ 	std::string name; // var for name 
+ 	std::getline(std::cin, name); // read line
+ 	std::cout << "Hello World from " << name << std::endl; // print the resault 
  	return 0;
 }
