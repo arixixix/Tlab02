@@ -146,12 +146,51 @@ Part III
 
 Note: Работать продолжайте с теми же репоззиториями, что и в первой части задания.
 
-    1. Создайте новую локальную ветку patch2.
-    2. Измените code style с помощью утилиты clang-format. Например, используя опцию -style=Mozilla.
-    3. commit, push, создайте pull-request patch2 -> master.
-    4. В ветке master в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
-    5. Убедитесь, что в pull-request появились конфликтны.
-    6. Для этого локально выполните pull + rebase (точную последовательность команд, следует узнать самостоятельно). Исправьте конфликты.
-    7. Сделайте force push в ветку patch2
-    8. Убедитель, что в pull-request пропали конфликтны.
-    9. Вмержите pull-request patch2 -> master.
+1. Создайте новую локальную ветку patch2.
+2. Измените code style с помощью утилиты clang-format. Например, используя опцию -style=Mozilla.
+
+```sh
+% git checkout -b patch2
+Переключились на новую ветку «patch2»
+% brew install clang-format
+% clang-format -i --style=Mozilla hello_world.cpp
+```
+
+3. commit, push, создайте pull-request patch2 -> master.
+4. В ветке master в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
+
+5. Убедитесь, что в pull-request появились конфликтны.
+6. Для этого локально выполните pull + rebase (точную последовательность команд, следует узнать самостоятельно). Исправьте конфликты.
+7. Сделайте force push в ветку patch2
+
+```sh
+% git pull origin main 
+% git status
+% vim hello_world.cpp 
+
+#include <string>
+
+int
+main()
+{
+  std::string name;             // var for name
+  std::getline(std::cin, name); // read line
+  std::cout << "Hello World from " << name << std::endl; // print the resault
+  return 0;
+}
+
+% git add .
+% git rebase --continue
+[отделённый HEAD 98f7ddf] -style=Mozilla with rebase
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+Успешно перемещён и обновлён refs/heads/patch2.
+% git push --force 
+
+```
+
+8. Убедитель, что в pull-request пропали конфликтны.
+
+<img width="917" alt="изображение" src="https://github.com/arixixix/Tlab02/assets/92848880/63be9cfd-4e2c-426f-b9f0-de941e8e5bf1">
+
+
+9. Вмержите pull-request patch2 -> master.
